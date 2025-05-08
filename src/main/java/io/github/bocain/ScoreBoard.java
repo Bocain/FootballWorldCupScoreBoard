@@ -24,7 +24,7 @@ class ScoreBoard {
         return games.stream()
                 .sorted(Comparator.comparingInt(Game::getTotalScore)
                         .reversed()
-                        .thenComparing(Game::getCreatedAt))
+                        .thenComparing(Game::getSequenceId))
                 .collect(Collectors.toList());
     }
 
