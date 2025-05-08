@@ -9,7 +9,7 @@ class GameTest {
     void shouldCreateGameWithZeroScore() {
         Game game = new Game("Poland", "Germany");
         assertEquals(0, game.getTotalScore());
-        assertNotNull(game.getCreatedAt());
+        assertNotNull(game.getSequenceId());
     }
 
     @Test
@@ -47,7 +47,7 @@ class GameTest {
     @Test
     void createdAtShouldNotBeNull() {
         Game game = new Game("Poland", "Germany");
-        assertNotNull(game.getCreatedAt());
+        assertNotNull(game.getSequenceId());
     }
 
 }
