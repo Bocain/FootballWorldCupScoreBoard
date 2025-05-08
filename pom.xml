@@ -48,6 +48,13 @@
                     <target>17</target>
                 </configuration>
             </plugin>
+
+            <!-- ważne dla JUnit 5 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M9</version>
+            </plugin>
         </plugins>
     </build>
 
