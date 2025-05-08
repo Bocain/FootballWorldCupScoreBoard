@@ -1,7 +1,7 @@
 package io.github.bocain;
 
 import lombok.EqualsAndHashCode;
-import java.time.LocalDateTime;
+import java.util.concurrent.atomic.AtomicLong;
 
 @EqualsAndHashCode(of = {"homeTeam", "awayTeam"})
 public class Game {
@@ -10,14 +10,16 @@ public class Game {
     private final String awayTeam;
     private int homeScore;
     private int awayScore;
-    private final LocalDateTime createdAt;
+
+    private static final AtomicLong ID_GENERATOR = new AtomicLong();
+    private final long sequenceId;
 
     public Game(String homeTeam, String awayTeam) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.homeScore = 0;
         this.awayScore = 0;
-        this.createdAt = LocalDateTime.now();
+        this.sequenceId =  ID_GENERATOR.incrementAndGet();
     }
 
     public void updateScore(int home, int away) {
@@ -25,8 +27,8 @@ public class Game {
         this.awayScore = away;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public long getSequenceId() {
+        return sequenceId;
     }
 
     public int getTotalScore() {
