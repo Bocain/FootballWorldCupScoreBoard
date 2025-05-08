@@ -25,8 +25,21 @@ public class Game {
         this.awayScore = away;
     }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public int getTotalScore() { return homeScore + awayScore; }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public int getTotalScore() {
+        return homeScore + awayScore;
+    }
+
+    public String getHomeTeam() {
+        return homeTeam;
+    }
+
+    public String getAwayTeam() {
+        return awayTeam;
+    }
 
     @Override
     public String toString() {
