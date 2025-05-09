@@ -21,9 +21,6 @@ jobs:
 
       - name: Build with Maven
         run: mvn -B clean verify
-        with:
-          name: FootballWorldCupScoreBoard
-          path: target/*.jar
 
       - name: Create GitHub Release with version and changelog
         uses: softprops/action-gh-release@v1
