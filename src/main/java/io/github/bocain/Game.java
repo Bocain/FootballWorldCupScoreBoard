@@ -1,9 +1,8 @@
 package io.github.bocain;
 
-import lombok.EqualsAndHashCode;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
-@EqualsAndHashCode(of = {"homeTeam", "awayTeam"})
 public class Game {
 
     private final String homeTeam;
@@ -47,5 +46,19 @@ public class Game {
     public String toString() {
         return String.format("%s %d - %d %s", homeTeam, homeScore, awayScore, awayTeam);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Game)) return false;
+        Game game = (Game) o;
+        return Objects.equals(homeTeam, game.homeTeam) && Objects.equals(awayTeam, game.awayTeam);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(homeTeam, awayTeam);
+    }
+
 
 }
