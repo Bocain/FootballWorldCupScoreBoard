@@ -3,7 +3,7 @@ package io.github.bocain;
 import java.util.*;
 import java.util.stream.Collectors;
 
-class ScoreBoard {
+public class ScoreBoard {
 
     private final Set<Game> games = new HashSet<>();
 
