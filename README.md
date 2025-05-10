@@ -1,25 +1,73 @@
 # Football World Cup Score Board Library
 
-A simple Java library for managing a Football World Cup score board – matches can be started, updated, finished, and listed as a  summary of games by total score.
+A simple Java library for managing a Football World Cup score board — matches can be started, updated, finished, and listed as a summary of games by total score.
 
 ---
 
-## 📦 Installation (Maven)
+## Requirements
 
-Add the following to your `pom.xml`:
+- Java **8** or higher
+- Maven **3.6+**
+
+## Installation (Maven)
+
+### 1. Create a `lib` folder in the root of your project
+
+```
+project-root/
+├── lib/
+├── src/
+└── target/
+```
+
+### 2. Add the dependency to your `pom.xml`
 
 ```xml
-<repository>
-    <id>github</id>
-    <url>https://maven.pkg.github.com/Bocain/FootballWorldCupScoreBoard</url>
-</repository>
-
 <dependency>
   <groupId>io.github.Bocain</groupId>
   <artifactId>FootballWorldCupScoreBoard</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 
-## Owners & Developers
-- Bocain [allegrodolar@vp.pl]
+### 3. Install the JAR locally
+
+```
+mvn install:install-file \
+  -Dfile=lib/FootballWorldCupScoreBoard-1.0.2.jar \
+  -DgroupId=io.github.Bocain \
+  -DartifactId=FootballWorldCupScoreBoard \
+  -Dversion=1.0.2 \
+  -Dpackaging=jar
+```
+
+### 4. Build your project
+
+```bash
+mvn clean install
+```
+
+---
+
+## Usage Example
+
+Here's a basic example of how to use the FootballWorldCupScoreBoard library:
+
+```java
+import io.github.bocain.ScoreBoard;
+
+public class Main {
+    public static void main(String[] args) {
+        ScoreBoard scoreboard = new ScoreBoard();
+
+        scoreboard.startGame("Poland", "USA");
+
+        scoreboard.getSummary().forEach(System.out::println); 
+        // returns "Poland 0 - 0 USA"
+    }
+}
+```
+
+## Owners & Contributors
+
+- **Bocain** – [allegrodolar@vp.pl]
