@@ -38,16 +38,52 @@ class GameTest {
     void toStringShouldBeFormatted() {
         Game game = new Game("Italy", "England");
         game.updateScore(1, 1);
-        String text = game.toString();
-        assertTrue(text.contains("Italy"));
-        assertTrue(text.contains("England"));
-        assertTrue(text.contains("1 - 1"));
+        assertTrue(game.toString().equals("Italy 1 - 1 England"));
     }
 
     @Test
     void createdAtShouldNotBeNull() {
         Game game = new Game("Poland", "Germany");
         assertNotNull(game.getSequenceId());
+    }
+
+    @Test
+    void testConstructorSameTeamsThrowsException() {
+        assertEquals("Teams must be different.",
+                assertThrows(IllegalArgumentException.class,
+                        () -> new Game("Team A", "Team A")).getMessage());
+    }
+
+    @Test
+    void testConstructorNullOrBlankThrowsException() {
+        assertEquals("Team names cannot be empty.",
+                assertThrows(IllegalArgumentException.class,
+                        () -> new Game(null, "Team B")).getMessage());
+
+        assertEquals("Team names cannot be empty.",
+                assertThrows(IllegalArgumentException.class,
+                        () -> new Game("Team A", null)).getMessage());
+
+        assertEquals("Team names cannot be empty.",
+                assertThrows(IllegalArgumentException.class,
+                        () -> new Game(" ", "Team B")).getMessage());
+
+        assertEquals("Team names cannot be empty.",
+                assertThrows(IllegalArgumentException.class,
+                        () -> new Game("Team A", "")).getMessage());
+    }
+
+    @Test
+    void testUpdateScoreNegativeThrowsException() {
+        Game game = new Game("Team A", "Team B");
+
+        assertEquals("Results cannot be negative.",
+                assertThrows(IllegalArgumentException.class,
+                        () -> game.updateScore(-1, 2)).getMessage());
+
+        assertEquals("Results cannot be negative.",
+                assertThrows(IllegalArgumentException.class,
+                        () -> game.updateScore(2, -1)).getMessage());
     }
 
 }
