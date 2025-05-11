@@ -26,7 +26,7 @@ project-root/
 <dependency>
   <groupId>io.github.Bocain</groupId>
   <artifactId>FootballWorldCupScoreBoard</artifactId>
-  <version>2.0.0</version>
+  <version>2.0.1</version>
 </dependency>
 ```
 
@@ -34,10 +34,10 @@ project-root/
 
 ```
 mvn install:install-file \
-  -Dfile=lib/FootballWorldCupScoreBoard-2.0.0.jar \
+  -Dfile=lib/FootballWorldCupScoreBoard-2.0.1.jar \
   -DgroupId=io.github.Bocain \
   -DartifactId=FootballWorldCupScoreBoard \
-  -Dversion=2.0.0 \
+  -Dversion=2.0.1 \
   -Dpackaging=jar
 ```
 
