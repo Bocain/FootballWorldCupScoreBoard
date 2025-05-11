@@ -41,7 +41,7 @@ public class ScoreBoardTest {
     }
 
     @Test
-    void shouldReturnGamesSortedByTotalScoreAndCreationTime() {
+    void shouldReturnGamesSortedByTotalScoreAndCreationOrder() {
         scoreboard.startGame("NewYork", "Seatle");
         scoreboard.startGame("Gdynia", "Malbork");
         scoreboard.startGame("Warszawa", "Łódź");
@@ -53,10 +53,10 @@ public class ScoreBoardTest {
         List<Game> summary = scoreboard.getSummary();
 
         // Games with same total score should be sorted by sequenceId (latest first)
-        assertEquals("Gdynia", summary.get(0).getHomeTeam());
-        assertEquals("Warszawa", summary.get(1).getHomeTeam()); // same score, but started later
-        assertEquals("NewYork", summary.get(2).getHomeTeam());
-        assertEquals("Kutno", summary.get(3).getHomeTeam());
+        assertEquals("Warszawa", summary.get(0).getHomeTeam()); // same score, but started later
+        assertEquals("Gdynia", summary.get(1).getHomeTeam());
+        assertEquals("Kutno", summary.get(2).getHomeTeam());
+        assertEquals("NewYork", summary.get(3).getHomeTeam());
     }
 
     @Test

@@ -26,9 +26,10 @@ class ScoreBoard {
 
     public final List<Game> getSummary() {
         return games.stream()
-                .sorted(Comparator.comparingInt(Game::getTotalScore)
-                        .reversed()
-                        .thenComparing(Game::getSequenceId))
+                .sorted(
+                        Comparator.comparingInt(Game::getTotalScore).reversed()
+                                .thenComparing(Comparator.comparingLong(Game::getSequenceId).reversed())
+                )
                 .collect(Collectors.toList());
     }
 
