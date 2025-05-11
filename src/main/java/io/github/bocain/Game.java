@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
  *
  * @author Kamil Kaliński
  */
-public class Game {
+public final class Game {
 
     private final String homeTeam;
     private final String awayTeam;
@@ -23,6 +23,12 @@ public class Game {
     private final long sequenceId;
 
     public Game(String homeTeam, String awayTeam) {
+        if (homeTeam == null || awayTeam == null || homeTeam.isBlank() || awayTeam.isBlank()) {
+            throw new IllegalArgumentException("Team names cannot be empty.");
+        }
+        if (homeTeam.equals(awayTeam)) {
+            throw new IllegalArgumentException("Teams must be different.");
+        }
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.homeScore = 0;
@@ -31,6 +37,9 @@ public class Game {
     }
 
     public void updateScore(int home, int away) {
+        if (home < 0 || away < 0) {
+            throw new IllegalArgumentException("Results cannot be negative.");
+        }
         this.homeScore = home;
         this.awayScore = away;
     }
