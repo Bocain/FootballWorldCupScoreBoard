@@ -52,10 +52,33 @@ public class ScoreBoardTest {
 
         List<Game> summary = scoreboard.getSummary();
 
+        // Games with same total score should be sorted by sequenceId (latest first)
         assertEquals("Gdynia", summary.get(0).getHomeTeam());
-        assertEquals("Warszawa", summary.get(1).getHomeTeam());
+        assertEquals("Warszawa", summary.get(1).getHomeTeam()); // same score, but started later
         assertEquals("NewYork", summary.get(2).getHomeTeam());
         assertEquals("Kutno", summary.get(3).getHomeTeam());
+    }
+
+    @Test
+    void testStartDuplicateGameThrowsException() {
+        scoreboard.startGame("Team A", "Team B");
+        assertEquals("The match is already underway: Team A vs Team B",
+                assertThrows(IllegalStateException.class,
+                        () -> scoreboard.startGame("Team A", "Team B")).getMessage());
+    }
+
+    @Test
+    void testUpdateScoreOnNonExistingGameThrowsException() {
+        assertEquals("No match found: Team A vs Team B",
+                assertThrows(NoSuchElementException.class,
+                        () -> scoreboard.updateScore("Team A", "Team B", 1, 1)).getMessage());
+    }
+
+    @Test
+    void testFinishNonExistingGameThrowsException() {
+        assertEquals("No match found: Team A vs Team B",
+                assertThrows(NoSuchElementException.class,
+                        () -> scoreboard.finishGame("Team A", "Team B")).getMessage());
     }
 
 }
