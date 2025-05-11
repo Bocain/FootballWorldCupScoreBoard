@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  *
  * @author Kamil Kaliński
  */
-class ScoreBoard {
+public class ScoreBoard {
 
     private final Set<Game> games = new HashSet<>();
 
