@@ -7,20 +7,20 @@ class ScoreBoard {
 
     private final Set<Game> games = new HashSet<>();
 
-    public void startGame(String homeTeam, String awayTeam) {
+    public final void startGame(String homeTeam, String awayTeam) {
         games.add(new Game(homeTeam, awayTeam));
     }
 
-    public void updateScore(String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore) {
+    public final void updateScore(String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore) {
         Game game = findGame(homeTeam, awayTeam);
         game.updateScore(homeTeamScore, awayTeamScore);
     }
 
-    public void finishGame(String homeTeam, String awayTeam) {
+    public final void finishGame(String homeTeam, String awayTeam) {
         games.remove(findGame(homeTeam, awayTeam));
     }
 
-    public List<Game> getSummary() {
+    public final List<Game> getSummary() {
         return games.stream()
                 .sorted(Comparator.comparingInt(Game::getTotalScore)
                         .reversed()

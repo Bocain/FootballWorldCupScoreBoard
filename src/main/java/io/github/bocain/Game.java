@@ -3,7 +3,7 @@ package io.github.bocain;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class Game {
+public final class Game {
 
     private final String homeTeam;
     private final String awayTeam;
