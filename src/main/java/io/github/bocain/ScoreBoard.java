@@ -3,6 +3,15 @@ package io.github.bocain;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Manages a collection of ongoing football games and their current scores.
+ * <p>
+ * Provides methods to start new games, update their scores,
+ * finish games, and retrieve a summary of active games sorted by total score and creation time.
+ * <p>
+ *
+ * @author Kamil Kaliński
+ */
 class ScoreBoard {
 
     private final Set<Game> games = new HashSet<>();

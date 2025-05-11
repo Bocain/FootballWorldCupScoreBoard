@@ -3,6 +3,15 @@ package io.github.bocain;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * Represents a game between two distinct teams.
+ * <p>
+ * Each game tracks the home and away team names, the current score,
+ * and a unique sequence ID indicating the order in which the game was created.
+ * <p>
+ *
+ * @author Kamil Kaliński
+ */
 public class Game {
 
     private final String homeTeam;
