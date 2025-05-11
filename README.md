@@ -34,7 +34,7 @@ project-root/
 
 ```
 mvn install:install-file \
-  -Dfile=lib/FootballWorldCupScoreBoard-1.0.2.jar \
+  -Dfile=lib/FootballWorldCupScoreBoard-2.0.0.jar \
   -DgroupId=io.github.Bocain \
   -DartifactId=FootballWorldCupScoreBoard \
   -Dversion=2.0.0 \
